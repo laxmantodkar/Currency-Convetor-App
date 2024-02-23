@@ -1,11 +1,12 @@
 package com.example.correncyconvertorapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,8 +18,24 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(View->{
 
             EditText amount=findViewById(R.id.amount);
-         int intAmount=Integer.parseInt(amount.getText().toString())*82;
-            Toast.makeText(this,"AMOUNT IN INDIAN CURRENCY "+intAmount+ " RS",Toast.LENGTH_SHORT).show();
+            int intAmount=Integer.parseInt(amount.getText().toString())*82;
+            AlertDialog.Builder alert=new AlertDialog.Builder(this);
+            alert.setTitle("Ammount Converted");
+            alert.setMessage("Do you want to convert the amount");
+            alert.setPositiveButton("YES", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            alert.show();
+
         });
     }
 }
